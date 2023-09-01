@@ -32,7 +32,7 @@ const gameSchema = new mongoose.Schema({
     playerTurn: {
         type: Number,
         required: true,
-        default: -1
+        default: 0
     },
     board: {
         type: Array,

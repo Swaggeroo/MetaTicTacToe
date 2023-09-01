@@ -25,10 +25,11 @@ function joinGame(code) {
                     games = JSON.parse(games);
                 }
                 console.log(games)
-                games.push({ "gameCode": code, "playerCode": data[1].id });
+                games.push({ "gameCode": code, "playerCode": data[1].id, "playerNumber": data[1].number+1 });
                 setCookie("Games", JSON.stringify(games), { "expires": 365 });
                 sendGTAGEvent('join_game');
-                window.location.href = `./game.html?code=${code}`;
+                let created = urlParams.get("create");
+                window.location.href = `./game.html?code=${code}` + (created === null ? "" : "&create=true");
             }).catch(error => {
                 console.error('Error:', error);
                 showModal('Unknown Error:\n' + error);

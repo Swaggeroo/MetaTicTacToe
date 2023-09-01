@@ -66,7 +66,7 @@ router.post('/join/:code', dbConnected, async (req, res) => {
 
     if (game.players.length === 2) {
         game.started = true;
-        game.playerTurn = 0;
+        game.playerTurn = 1;
     }
 
     await game.save();
@@ -77,7 +77,7 @@ router.post('/join/:code', dbConnected, async (req, res) => {
 });
 
 router.get('/state', dbConnected, getGame, async (req, res) => {
-    debugRoute("GET /api/game/state/:code - 200 - Game state");
+    //debugRoute("GET /api/game/state/:code - 200 - Game state");
 
     res.send(_.pick(req.game, ['code', 'started', 'playerTurn', 'board', 'bigBoard', 'won', 'nextBoard']));
 });
@@ -162,6 +162,9 @@ function boardWon(boardElement) {
 router.post('/move/:bigField/:smallField', dbConnected, getGame, playersTurn, updateTimeStamp, async (req, res) => {
     let game = req.game;
 
+    req.params.bigField = parseInt(req.params.bigField);
+    req.params.smallField = parseInt(req.params.smallField);
+
     if (game.bigBoard[req.params.bigField] !== 0) {
         debugRoute("GET /api/game/move/:bigField/:smallField - 400 - Big field already won");
         return res.status(400).send('Big field already won.');
@@ -177,17 +180,24 @@ router.post('/move/:bigField/:smallField', dbConnected, getGame, playersTurn, up
         return res.status(400).send('Wrong board.');
     }
 
-    game.board[req.params.bigField][req.params.smallField] = game.playerTurn + 1;
+    game.board[req.params.bigField][req.params.smallField] = game.playerTurn;
 
     game.bigBoard[req.params.bigField] = boardWon(game.board[req.params.bigField]);
 
-    game.won = boardWon(game.board);
+    game.won = boardWon(game.bigBoard);
 
-    game.playerTurn = (game.playerTurn + 1) % 2;
+    game.playerTurn = ((game.playerTurn+2) % 2)+1;
 
     game.nextBoard = game.bigBoard[req.params.smallField] === 0 ? req.params.smallField : -1;
 
-    await game.save();
+    if (game.won !== 0) {
+        game.playerTurn = 0;
+        game.nextBoard = 9;
+    }
+
+    let jsonObj = game.toJSON();
+    delete jsonObj._id;
+    await Game.updateOne({_id: game._id}, jsonObj);
 
     debugRoute("GET /api/game/move/:bigField/:smallField - 200 - Move made");
 

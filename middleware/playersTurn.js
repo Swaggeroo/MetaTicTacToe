@@ -3,7 +3,7 @@ module.exports = async function (req, res, next) {
         return res.status(400).send('Game not started.');
     }
 
-    if (req.game.players[req.game.playerTurn].id !== req.player.id) {
+    if (req.game.players[req.game.playerTurn-1].id !== req.player.id) {
         return res.status(400).send('Not your turn.');
     }
 

@@ -1,0 +1,105 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: var(--accent-color);
+    aspect-ratio: 1/1;
+}
+
+.child-grid-container{
+    padding: 1px;
+    height: 28vh;
+    width: 28vh;
+}
+
+.root-grid-container{
+    height: 84vh;
+    width: 84vh;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.finalText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: #dfdfdf;
+    text-align: center;
+    padding: 1px;
+    height: 28vh;
+    width: 28vh;
+}
+
+.smallText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: #dfdfdf;
+    text-align: center;
+    padding: 1px;
+    height: 28vh;
+    width: 28vh;
+}
+
+.text0{
+    font-size: 20vh;
+    color: red;
+    pointer-events: none;
+}
+
+.textX{
+    font-size: 35vh;
+    color: blue;
+    pointer-events: none;
+}
+
+.textDraw{
+    font-size: 5vh;
+    color: green;
+}
+
+.grid-item {
+    background-color: #dfdfdf;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    font-size: 7vh;
+    text-align: center;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    width: 9.33333vh;
+    height: 9.33333vh;
+}
+
+.grid-item > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.smallX{
+    font-size: 13vh;
+    color: blue;
+    pointer-events: none;
+}
+
+.small0{
+    font-size: 7vh;
+    color: red;
+    pointer-events: none;
+}
+
+.currentSector{
+    background-color: rgb(229, 210, 41);
+}
+
+.grid-item:hover {
+    background-color: rgb(201, 176, 232);
+}
