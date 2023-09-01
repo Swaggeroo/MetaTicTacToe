@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Meta Tic Tac Toe Game</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="Meta Tic Tac Toe">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="mttt.swaggeroo.de">
+    <meta property="og:image" content="">
+
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="apple-touch-icon" href="../icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/form.css">
+
+    <meta name="theme-color" content="#2bd8ff">
+</head>
+
+<body>
+<div id="cookies-eu-banner" style="display: none; position: absolute; bottom: 0; width: 100%; left:0;background: black; color: #cccccc; padding-top: .5rem;padding-bottom: .5rem; z-index: 999">
+    <p style="padding-left: 1rem; padding-right: .5rem">By continuing your visit to this site, you accept the use of cookies by Google Analytics for analytics. Necessary cookies are used to make our site work, so you can't opt out of them.</p>
+    <button class="cookieButton" id="cookies-eu-reject">Reject</button>
+    <button class="cookieButton accept" id="cookies-eu-accept">Accept</button>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+
+<div class="flex-container column">
+    <h1 class="title mainColor noSelect" id="title">Meta Tic Tac Toe</h1>
+</div>
+
+<div class="content">
+
+</div>
+
+
+<footer class="noSelect">
+    <img src="../img/footer.svg" class="footImg" alt="Footer Image">
+    <div class="foot">
+        <p>This Website was made by:
+            <a href="https://github.com/Swaggeroo">
+                <img crossorigin="anonymous" src="https://img.shields.io/github/followers/Swaggeroo?color=green&label=Swaggeroo&logo=github&style=flat-square" alt="Swaggeroo">
+            </a>
+        </p>
+    </div>
+</footer>
+
+<script src="../js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="../js/plugins.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/pages/gamePage.js"></script>
+<script src="../js/vendor/cookies-eu-banner.min.js"></script>
+<script>
+    new CookiesEuBanner(function () {
+        let script = document.createElement( "script" )
+        script.type = "text/javascript";
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-EMDLZ9R7RS";
+        script.onload = function() {
+            document.head.appendChild(script);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Z64XK3LSGS');
+            //TAG: gtag('event', 'button_push');
+        };
+        document.head.appendChild(script);
+    },true);
+</script>
+</body>
+
+</html>

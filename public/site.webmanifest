@@ -1,0 +1,12 @@
+{
+  "short_name": "MTTT",
+  "name": "MetaTicTacToe",
+  "icons": [{
+    "src": "icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/",
+  "background_color": "#111111",
+  "theme_color": "#2bd8ff"
+}
