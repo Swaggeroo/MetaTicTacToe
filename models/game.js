@@ -1,6 +1,4 @@
-const Joi = require('joi');
 const mongoose = require('mongoose').default;
-const jwt = require("jsonwebtoken");
 const crypto = require('crypto');
 
 const gameSchema = new mongoose.Schema({

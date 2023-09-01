@@ -161,7 +161,6 @@ function boardWon(boardElement) {
 
 router.post('/move/:bigField/:smallField', dbConnected, getGame, playersTurn, updateTimeStamp, async (req, res) => {
     let game = req.game;
-    let player = req.player;
 
     if (game.bigBoard[req.params.bigField] !== 0) {
         debugRoute("GET /api/game/move/:bigField/:smallField - 400 - Big field already won");

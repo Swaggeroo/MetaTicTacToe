@@ -75,5 +75,5 @@ if (form.attachEvent) {
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("error") !== null) {
-    showModal(urlParams.get("error").replace(/<[^>]*>/g, ''));
+    showModal(sanitizeString(urlParams.get("error")));
 }
