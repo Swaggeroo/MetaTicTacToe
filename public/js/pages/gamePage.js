@@ -93,9 +93,9 @@ function fetchGameData(once = false){
 
         if (gameData.won === 0 && !once){
             if (yourTurn){
-                setTimeout(fetchGameData, 10000);
+                setTimeout(fetchGameData, 7000);
             }else{
-                setTimeout(fetchGameData, 2000);
+                setTimeout(fetchGameData, 1500);
             }
         }
 
@@ -160,6 +160,7 @@ function move(elem){
                 showModal(new Error(`${r.status} - ${text}`));
             });
         }else{
+            sendGTAGEvent('move');
             fetchGameData(true);
         }
     });
@@ -172,9 +173,14 @@ function copyUrl() {
 
 let rootInner = "";
 for(let bigCellIndex = 0; bigCellIndex < 9; bigCellIndex++){
-    rootInner += '<div class="grid-container child-grid-container" data-big-field="'+bigCellIndex+'">'
+    let gridColumn = parseInt(((bigCellIndex % 3)+1)*1.7);
+    let gridRow = parseInt((parseInt(bigCellIndex / 3)+1)*1.7);
+
+    rootInner += '<div class="grid-container child-grid-container" data-big-field="'+bigCellIndex+'" style="grid-column: '+gridColumn+'; grid-row: '+gridRow+'">'
     for(let smallCellIndex = 0; smallCellIndex < 9; smallCellIndex++){
-        rootInner += '<div class="grid-item" data-small-field="'+smallCellIndex+'" onclick="move(this)"><div></div></div>'
+        let gridColumnSmall = parseInt(((smallCellIndex % 3)+1)*1.7);
+        let gridRowSmall = parseInt((parseInt(smallCellIndex / 3)+1)*1.7);
+        rootInner += '<div class="grid-item" data-small-field="'+smallCellIndex+'" onclick="move(this)" style="grid-column: '+gridColumnSmall+'; grid-row: '+gridRowSmall+'"><div></div></div>'
     }
     rootInner += '</div>'
 }

@@ -1,19 +1,31 @@
+body{
+    --overallSize: 88vh;
+    --paddingBig: 2vh;
+    --paddingSmall: 0.25vh;
+    --overallWithoutPadding: calc(var(--overallSize) - calc(var(--paddingBig)*2));
+    --mediumSize: calc(var(--overallWithoutPadding) / 3);
+    --mediumSizeWithoutPadding: calc(var(--mediumSize) - calc(var(--paddingSmall)*2));
+    --smallSize: calc(var(--mediumSizeWithoutPadding) / 3);
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    background-color: var(--accent-color);
+    background-color: #dfdfdf;
     aspect-ratio: 1/1;
 }
 
-.child-grid-container{
-    padding: 1px;
-    height: 28vh;
-    width: 28vh;
+.root-grid-container{
+    grid-template-columns: var(--mediumSize) var(--paddingBig) var(--mediumSize) var(--paddingBig) var(--mediumSize);
+    grid-template-rows: var(--mediumSize) var(--paddingBig) var(--mediumSize) var(--paddingBig) var(--mediumSize);
+    height: var(--overallSize);
+    background-color: var(--background-color);
 }
 
-.root-grid-container{
-    height: 84vh;
-    width: 84vh;
+.child-grid-container{
+    grid-template-columns: var(--smallSize) var(--paddingSmall) var(--smallSize) var(--paddingSmall) var(--smallSize);
+    grid-template-rows: var(--smallSize) var(--paddingSmall) var(--smallSize) var(--paddingSmall) var(--smallSize);
+    background-color: var(--background-color);
 }
 
 .center{
@@ -31,8 +43,8 @@
     background-color: #dfdfdf;
     text-align: center;
     padding: 1px;
-    height: 28vh;
-    width: 28vh;
+    height: var(--mediumSize);
+    width: var(--mediumSize);
 }
 
 .smallText{
@@ -43,8 +55,8 @@
     background-color: #dfdfdf;
     text-align: center;
     padding: 1px;
-    height: 28vh;
-    width: 28vh;
+    height: var(--smallSize);
+    width: var(--smallSize);
 }
 
 .text0{
@@ -66,14 +78,13 @@
 
 .grid-item {
     background-color: #dfdfdf;
-    border: 1px solid rgba(0, 0, 0, 0.8);
     font-size: 7vh;
     text-align: center;
     aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
-    width: 9.33333vh;
-    height: 9.33333vh;
+    width: var(--smallSize);
+    height: var(--smallSize);
 }
 
 .grid-item > div{

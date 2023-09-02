@@ -9,7 +9,7 @@ body{
 	padding: 0;
 	font-family: sans-serif;
 	scroll-behavior: smooth;
-	background-color: #111111;
+	--background-color: #111111;
 	--accent-color: #2bd8ff;
 	--accent-color-dark: #1f6770;
 	--accent-color-second: #ababab;
@@ -17,6 +17,7 @@ body{
 	--background-secondary: #343434;
 	color: var(--text-color);
 	accent-color: var(--accent-color);
+	background-color: var(--background-color);
 }
 
 html, body, #fullheight {
