@@ -1,0 +1,22 @@
+version: "3"
+services:
+    meta-tic-tac-toe:
+        image: ghcr.io/swaggeroo/meta-tic-tac-toe
+        restart: unless-stopped
+        ports:
+        - "80:3000"
+        environment:
+        - mongoUrl=mongodb://mongo/metaTicTacToe
+        - mongoUser=admin
+        - mongoPassword=CHANGEME
+        - PORT=3000
+        depends_on:
+        - mongo
+    mongo:
+        image: mongo
+        restart: unless-stopped
+        environment:
+        - MONGO_INITDB_ROOT_USERNAME=admin
+        - MONGO_INITDB_ROOT_PASSWORD=CHANGEME
+        volumes:
+        - /opt/metaTicTacToe:/data/db

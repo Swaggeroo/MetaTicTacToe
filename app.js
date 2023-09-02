@@ -15,11 +15,6 @@ const games = require('./routes/game');
 //models
 const {Game} = require("./models/game");
 
-if (!process.env.jwtPrivateKey) {
-    debugStartup('FATAL ERROR: jwtPrivateKey is not defined.');
-    process.exit(1);
-}
-
 const app = express();
 
 //default middleware
