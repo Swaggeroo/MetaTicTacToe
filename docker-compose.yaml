@@ -1,7 +1,7 @@
 version: "3"
 services:
     meta-tic-tac-toe:
-        image: ghcr.io/swaggeroo/meta-tic-tac-toe
+        image: ghcr.io/swaggeroo/metatictactoe
         restart: unless-stopped
         ports:
         - "80:3000"
