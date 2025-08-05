@@ -92,16 +92,33 @@ function connect(){
         process.exit(1);
     }
 
-    debugDB("Trying to connect to MongoDB with "+ user +" - "+password)
-    mongoose.connect(url, {
-        "authSource": "admin",
-        "user": user,
-        "pass": password,
-        "useNewUrlParser": true,
-        "useUnifiedTopology": true
-    })
-        .then(() => {debugDB('Connected to MongoDB('+url+')...'); global.connected = true})
-        .catch(err => {debugDB('Could not connect to MongoDB(' + url + ')...', err); global.connected = false});
+    async function doConnect() {
+        debugDB("Trying to connect to MongoDB with "+ user +" - "+password)
+        try {
+            await mongoose.connect(url, {
+                "authSource": "admin",
+                "user": user,
+                "pass": password,
+                "useNewUrlParser": true,
+                "useUnifiedTopology": true
+            });
+            debugDB('Connected to MongoDB('+url+')...');
+            global.connected = true;
+        } catch (err) {
+            debugDB('MongoDB connection error: ' + err);
+            global.connected = false;
+        }
+    }
+
+    if (mongoose.connection.readyState !== 0) { // 0 = disconnected
+        debugDB('Disconnecting existing MongoDB connection before reconnecting...');
+        mongoose.disconnect().then(doConnect).catch(err => {
+            debugDB('Error during disconnect: ' + err);
+            doConnect();
+        });
+    } else {
+        doConnect();
+    }
 }
 
 async function deleteOldDocuments() {
