@@ -47,13 +47,6 @@ debugStartup('Meta Tic Tac Toe');
 let db = mongoose.connection;
 global.connected = false
 
-//reconnect on disconnect
-db.on('disconnected', function() {
-    debugDB('MongoDB connection error! - Retry in 15 seconds');
-    global.connected = false;
-    setTimeout(connect, 15000);
-});
-
 //close connection on exit
 process.on('SIGINT', function() {
     db.close(function () {
@@ -63,7 +56,7 @@ process.on('SIGINT', function() {
     });
 });
 
-//connect to db
+//connect to db (only once at startup)
 connect();
 
 //enable logging for not covered routes
