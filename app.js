@@ -91,9 +91,7 @@ function connect(){
             await mongoose.connect(url, {
                 "authSource": "admin",
                 "user": user,
-                "pass": password,
-                "useNewUrlParser": true,
-                "useUnifiedTopology": true
+                "pass": password
             });
             debugDB('Connected to MongoDB('+url+')...');
             global.connected = true;
